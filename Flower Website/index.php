@@ -1,0 +1,175 @@
+<?php
+$server ="localhost";
+$username ="root";
+$password ="";
+$con = mysqli_connect($server,$username,$password);
+
+if(!$con){
+    die("Connection to this Database Failed due to".mysqli_connect_error());
+}
+echo("Succesfull connection to this Database");
+ 
+
+$Name= $_POST['Name'];
+$Age= $_POST['Age'];
+$Gender= $_POST['Gender'];
+$Email= $_POST['Email'];
+$Phone= $_POST['Phone'];
+$message= $_POST['message'];
+ $sql = "INSERT INTO `trip`.`info` ( `Name`, `Age`, `Gender`, `Email`, `Phone`, `Message`) VALUES ('$Name', '$Age', '$Gender', '$Email', '$Phone', '$message');";
+echo $sql;
+
+if($con->query($sql) == true){
+    echo"Sucessfully inserted";
+}
+else{
+    echo"ERROR: $sql <br> $con->error";
+}
+$con->close();
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flower Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+<!-- Bootstrap Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-4 py-2">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="./images/flower.jpeg" alt="FLORA" height="50" width="50" class="me-2">
+      <strong>FLORA</strong>
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#type">Type</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Bootstrap Navbar End -->
+
+
+
+    <div class="image">
+        <p>Fresh, fragrant, and vibrant bouquets.
+Order now and make every moment bloom!</p>
+        <img class="img" src="./images/phtoshop2 image.jpg" alt="image" height="600" width="300" >
+    </div>
+<hr/>
+<div class="container" id="About">
+ <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./images/women  with flower.jpg" class="d-block w-100" alt="slide 1 image">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Fresh Blooms,Delivered Daily</h5>
+        <p>Heighlight Your commitment to freshness and timely delivery.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./images/image4.jpg" class="d-block w-100" alt="slide 2 image">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Shop by Occasion</h5>
+        <p>Help customers find  the perfect flowers for Birthdays,weddings,anniversaries,etc.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./images/image6.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Our Best-Selling Bouquetss</h5>
+        <p>Showcase popular arrangements that customers love.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+
+
+
+ <div class="grid" id="type">
+        <div class="item card1">
+            <img src="./images/birthday.webp" alt="flower" >
+            <p>Birthday Flower</p>
+            <button><a href="./card.html">Click here</a></button>
+        </div>
+        <div class="item card2">
+            <img src="./images/thank you.jpg" alt="image">
+            <p>Thnking You</p>
+            <button><a href="./card2.html">Click here</a></button>
+        </div>
+        <div class="item card3" alt="image" >
+        <img src="./images/typeimge6.jpg">
+        <p>Anniversary Whishes</p>
+        <button><a href="./card.html">Click here</a></button>
+    </div>
+    
+ </div><hr/>
+ <div class="container contact" >
+ <form action="./index.php" method="post" id="contact">
+
+  <input type="text" name="Name" id="Name" placeholder="Enter Your Name"><br/> 
+
+  <input type="text" name="Age" id="Age" placeholder="Enter Your Age"><br/>
+
+  <input type="text" name="Gender" id="Gender" placeholder="Enter Your Gender"><br/>
+
+  <input type="email" name="Email" id="Email" placeholder="Enter Your Email"><br/>
+
+  <input type="phone" name="Phone" id="Phone" placeholder="Enter Your phone"><br/>
+
+  <textarea name="message" id="message" placeholder=" Write your message here "></textarea>
+
+  <button class="Submit" id="Submit">Submit</button>
+
+  <p id="error-msg"></p>
+ </form>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <script src="./form.js"></script>
+  
+  </body>
+</html>
+
+
+
+
+
+
